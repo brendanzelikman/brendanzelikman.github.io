@@ -1,0 +1,57 @@
+.profile-container {
+  height: 40vmin;
+  width: 100%;
+  position: relative;
+}
+
+.profile-picture {
+  height: 45vmin;
+  width: 45vmin;
+  margin: 0 auto;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 1px solid white;
+  background-image: url("assets/profile/portrait.jpg");
+  background-size: 100% 100%;
+  filter: grayscale(0.2);
+  cursor: pointer;
+}
+
+.profile-name {
+  font-size: 4vmin;
+  width: 100%;
+  margin-top: 40px;
+  color: #3eabab;
+  font-family: "Press Start 2P", "cursive";
+  font-weight: bold;
+}
+
+.profile-title {
+  font-family: "DM Sans";
+  font-size: 3vmin;
+}
+
+.profile-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vmin;
+  margin-bottom: 2vmin;
+  margin: 0 auto;
+}
+
+.profile-credit {
+  font-family: "DM Sans";
+  font-size: 2vmin;
+}
+
+.profile-shield {
+  width: 4vmin;
+  height: 4vmin;
+  margin: 20px;
+}
+
+.profile-links a {
+  margin: 2vmin 3vmin;
+  color: white;
+}
