@@ -3,18 +3,11 @@ import "./index.css";
 
 import PrincetonShield from "assets/profile/princeton.png";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { useState } from "react";
 
 const Profile = () => {
-  const [spinning, setSpinning] = useState(false);
-
   return (
     <div className="profile-container">
-      <div
-        className={`profile-picture ${spinning ? "spin" : ""}`}
-        onClick={() => setSpinning((val) => !val)}
-        onAnimationEnd={() => setSpinning(false)}
-      />
+      <div className={`profile-picture`} />
       <h1 className="profile-name">BRENDAN ZELIKMAN</h1>
       <h5 className="profile-title">Programmer • Musician • Designer</h5>
       <div className="profile-links">
@@ -40,7 +33,7 @@ const Profile = () => {
         <OverlayTrigger overlay={<Tooltip>Resume</Tooltip>}>
           <a
             href={
-              "https://drive.google.com/file/d/15ALKQXWqhoScmfz9cgsyacx_tZGcqhBl/view?usp=sharing"
+              "https://drive.google.com/file/d/1yJ3DzIqNeXTk96L3_4thAwo4aAUu7aOU/view?usp=sharing"
             }
             target="_blank"
             rel="noreferrer"
