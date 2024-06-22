@@ -9,7 +9,12 @@ import { FaMusic } from "react-icons/fa";
 
 export function Music() {
   return (
-    <Section className="lg:p-8 p-4 lg:pr-0 pr-0 bg-gradient-to-t from-slate-950/50 via-slate-950/80 to-cyan-400/25">
+    <Section
+      initial={{ opacity: 0, translateY: 100 }}
+      whileInView={{ opacity: 1, translateY: 0 }}
+      viewport={{ once: true }}
+      className="lg:p-8 p-4 lg:pr-0 pr-0 bg-gradient-to-t from-slate-950/50 via-slate-950/80 to-cyan-400/25"
+    >
       <SectionHeader
         title="Music Portfolio"
         titleColor="text-sky-300"

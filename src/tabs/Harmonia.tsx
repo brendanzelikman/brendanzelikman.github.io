@@ -8,7 +8,12 @@ import { HARMONIA } from "constants";
 
 export function Harmonia() {
   return (
-    <Section className="lg:p-8 p-4 bg-gradient-to-t from-indigo-900/80 via-indigo-800/50 to-sky-950/50">
+    <Section
+      initial={{ opacity: 0, translateY: 100 }}
+      whileInView={{ opacity: 1, translateY: 0 }}
+      viewport={{ once: true }}
+      className="lg:p-8 p-4 bg-gradient-to-t from-indigo-900/80 via-indigo-800/50 to-sky-950/50"
+    >
       <SectionHeader
         title={
           <a href={HARMONIA} className="hover:underline text-sky-400">

@@ -60,10 +60,9 @@ export function Education() {
 
   return (
     <Section
-      initial={{ opacity: 0, translateY: 50 }}
+      initial={{ opacity: 0, translateY: 100 }}
       whileInView={{ opacity: 1, translateY: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className="p-8 bg-gradient-to-t from-slate-950/50 via-slate-950/80 to-orange-700/25"
     >
       <SectionHeader

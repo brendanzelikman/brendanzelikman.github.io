@@ -12,7 +12,6 @@ export function Experience() {
       initial={{ opacity: 0, translateY: 100 }}
       whileInView={{ opacity: 1, translateY: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className="lg:p-8 p-4 lg:pr-2 pr-2 bg-gradient-to-t from-slate-950/50 via-slate-950/80 to-teal-300/25"
     >
       <SectionHeader

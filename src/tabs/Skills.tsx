@@ -9,8 +9,8 @@ export function Skills() {
   const currentYear = new Date().getFullYear();
   return (
     <Section
-      initial={{ opacity: 0, translateX: 50, translateY: 100 }}
-      whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
+      initial={{ opacity: 0, translateY: 100 }}
+      whileInView={{ opacity: 1, translateY: 0 }}
       viewport={{ once: true }}
       className="lg:p-8 p-4 lg:pr-0 pr-2 bg-gradient-to-t from-slate-950/50 via-slate-950/80 to-indigo-400/25"
     >

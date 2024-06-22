@@ -28,12 +28,13 @@ function App() {
   // Update the active tab based on the scroll position
   const onViewScroll = useCallback(
     (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
-      const marginTop = 200;
+      const marginTop = window.innerHeight > 1024 ? 200 : 50;
       const { scrollTop, scrollHeight } = e.currentTarget;
       const tabHeight = scrollHeight / TAB_COUNT;
       const currentIndex = Math.floor((scrollTop + marginTop) / tabHeight);
-      const currentTab = TABS[currentIndex];
-      if (currentTab) setActiveTabIndex(currentIndex);
+      if (currentIndex > 0 && currentIndex < TAB_COUNT) {
+        setActiveTabIndex(currentIndex);
+      }
     },
     [TABS]
   );
@@ -47,7 +48,7 @@ function App() {
         <Background />
         <motion.div
           initial={{ height: 0 }}
-          animate={{ height: active ? "150px" : 0 }}
+          animate={{ height: active ? "120px" : 0 }}
           transition={{ duration: 0.3 }}
           className="w-full justify-center items-center overflow-hidden"
         >
