@@ -7,4 +7,37 @@
   background-color: #242424;
   color: white;
   scrollbar-width: none;
+  overflow: hidden;
+}
+
+@keyframes animateBackground {
+  0% {
+    scale: 1;
+    transform: translate(0, 0);
+  }
+  25% {
+    scale: 1.5;
+    transform: translate(5%, 5%);
+  }
+  50% {
+    scale: 2;
+    transform: translate(5%, -5%);
+  }
+  75% {
+    scale: 1.5;
+    transform: translate(-5%, -5%);
+  }
+}
+
+.neon {
+  animation: neon 10s ease infinite;
+}
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 20px #9c4ae968, 0 0 40px #7e3f6d;
+  }
+  50% {
+    text-shadow: 0 0 20px #1083e7a8, 0 0 40px #2c3f61;
+  }
 }

@@ -1,98 +1,91 @@
-import classNames from "classnames";
-import { HTMLMotionProps, motion } from "framer-motion";
-import { HTMLProps, ReactNode } from "react";
+import { PORTFOLIO_BADGES, PortfolioSection } from "badges";
+import { AnimatePresence, motion } from "framer-motion";
+import { BadgeItem } from "./Badge";
+import { useState } from "react";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { mod } from "constants";
+import { PROFILE_FADE_DELAY } from "view/Profile";
 
-export function Section(props: HTMLMotionProps<"ul">) {
+export function Section(props: { section: PortfolioSection; i: number }) {
+  const { section, i } = props;
+  const badges = PORTFOLIO_BADGES[section];
+  const badgeCount = badges.length;
+
+  const offset = 100;
+  const variants = {
+    center: { zIndex: 1, x: 0, opacity: 1 },
+    enter: (direction: number) => {
+      return { x: direction > 0 ? offset : -offset, opacity: 0 };
+    },
+    exit: (direction: number) => {
+      return { zIndex: 0, x: direction < 0 ? offset : -offset, opacity: 0 };
+    },
+  };
+
+  const [[index, direction], setIndex] = useState([0, 0]);
+  const badgeIndex = mod(index, badgeCount);
+  const offsetBadge = (newDirection: number) => {
+    setIndex([index + newDirection, newDirection]);
+  };
+
   return (
-    <motion.ul
-      {...props}
-      className={classNames(
-        props.className,
-        "flex flex-col my-auto",
-        "lg:max-w-lg md:max-w-md max-w-sm",
-        "border-2 border-slate-500 backdrop-blur-md rounded"
-      )}
+    <motion.div
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{
+        delay: PROFILE_FADE_DELAY + 1 + i * 0.3,
+        duration: 0.5,
+        type: "spring",
+      }}
+      className="h-full flex flex-col max-big:tiny:min-w-72"
     >
-      {props.children}
-    </motion.ul>
-  );
-}
+      <div className="px-2 whitespace-nowrap overflow-scroll py-1 bg-gradient-to-b from-sky-900/70 to-indigo-600/70 shadow-[0_0_20px_1px_#89f8] rounded rounded-b-none font-bold">
+        <span className="hidden supertiny:block">{section}</span>
+        <span className="supertiny:hidden">{section.split(" ").slice(1)}</span>
+      </div>
 
-interface SectionHeaderProps {
-  title: ReactNode;
-  titleColor?: string;
-  subtitles?: ReactNode[];
-  image?: ReactNode;
-}
-
-export function SectionHeader(props: SectionHeaderProps) {
-  return (
-    <div className="flex w-full">
-      <div className="flex-col min-w-fit">
-        <h2
-          className={classNames(
-            props.titleColor,
-            "font-bold text-2xl drop-shadow-xl whitespace-nowrap"
-          )}
-        >
-          {props.title}
-        </h2>
-        {(props.subtitles || []).map((subtitle, i) => (
-          <h3 key={`subtitle-${i}`} className="text-slate-300 font-extralight">
-            {subtitle}
-          </h3>
+      {/* Big and supertiny viewports see all badges */}
+      <div className="big:flex supertiny:hidden max-supertiny:*:mx-auto flex flex-wrap big:flex-row overflow-scroll supertiny:px-4 px-2 items-center gap-2 bg-slate-500/10">
+        {PORTFOLIO_BADGES[section].map((badge, i) => (
+          <BadgeItem key={i} {...badge} />
         ))}
       </div>
-      {!props.image ? null : (
-        <div className="flex-1 hidden md:flex h-full justify-end">
-          {props.image}
-        </div>
-      )}
-    </div>
-  );
-}
 
-interface SectionItemProps {
-  title: ReactNode;
-  caption: ReactNode;
-  captionColor?: string;
-  extendCaption?: boolean;
-}
-
-export function SectionItem(props: SectionItemProps) {
-  return (
-    <span
-      className={classNames(
-        "space-y-1 [&>li]:font-light pr-2",
-        props.extendCaption ? "" : "lg:pr-12"
-      )}
-    >
-      <div className="font-bold border-b border-b-slate-500/20">
-        {props.title}
+      {/* Small viewports use a carousel */}
+      <div className="big:hidden supertiny:flex hidden relative min-h-24 overflow-scroll items-center gap-2 bg-slate-500/10">
+        {/* Elements swipe in the direction they are going */}
+        <AnimatePresence initial={false} custom={direction}>
+          <div className="relative size-full min-w-48 shrink-0 min-h-28 flex items-center justify-center">
+            <motion.div
+              key={index}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute"
+              transition={{
+                x: { type: "spring", damping: 30, stiffness: 300 },
+                opacity: { duration: 0.5 },
+              }}
+            >
+              <BadgeItem {...badges[badgeIndex]} />
+            </motion.div>
+          </div>
+        </AnimatePresence>
+        <button
+          className="absolute supertiny:flex hidden left-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
+          onClick={() => offsetBadge(-1)}
+        >
+          <BsArrowLeft />
+        </button>
+        <button
+          className="absolute supertiny:flex hidden right-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
+          onClick={() => offsetBadge(1)}
+        >
+          <BsArrowRight />
+        </button>
       </div>
-      <div className={props.captionColor}>{props.caption}</div>
-    </span>
-  );
-}
-
-export function SectionItemList(props: { children?: ReactNode }) {
-  return (
-    <div {...props} className="flex flex-col mt-4 space-y-6">
-      {props.children}
-    </div>
-  );
-}
-
-export function SectionText(props: HTMLProps<HTMLParagraphElement>) {
-  return (
-    <p
-      {...props}
-      className={classNames(
-        props.className,
-        "text-slate-100 font-light whitespace-pre-wrap"
-      )}
-    >
-      {props.children}
-    </p>
+    </motion.div>
   );
 }
