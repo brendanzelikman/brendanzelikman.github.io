@@ -11,7 +11,7 @@ import {
   SONATA1,
   RACH,
   GITHUB,
-  HARMONIA_GITHUB,
+  PRINCETON_THESIS,
 } from "constants";
 import { BCShield, Harmonia } from "hooks/useImagePreloader";
 import { IconType } from "react-icons";
@@ -23,7 +23,6 @@ import {
   GiLion,
   GiPartyHat,
   GiTornado,
-  GiTeacher,
   GiClown,
   GiDramaMasks,
   GiBurningPassion,
@@ -63,14 +62,14 @@ export const SkillsBadges: Badge[] = [
     title: "Web Development",
     caption: "Typescript, React, Redux",
     color: "text-indigo-300",
-    url: HARMONIA,
+    url: GITHUB,
     Icon: BsGithub,
   },
   {
     title: "Music Technology",
     caption: "Scorewriters, DAWs, Plugins",
     color: "text-red-500",
-    url: HARMONIA,
+    url: PRINCETON_THESIS,
     Icon: () => <img src={Harmonia} alt="Harmonia" />,
   },
   {
