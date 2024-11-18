@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 import { BubblePortrait, StyledPortrait } from "components/Portrait";
 import { useAppContext } from "hooks/useAppContext";
+import { Typewriter } from "components/Typewriter";
 
 export function Profile() {
   const { active, setActive } = useAppContext();
@@ -71,10 +72,12 @@ export function Profile() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
                     className="supertiny:text-balance supertiny:text-lg text-sm"
-                  >{`Hello, World! I am a "mad musical scientist" living in NYC with
-                professional experience in programming, composing, and teaching.`}</motion.div>
+                  >
+                    {`Hello, World! I am a "mad musical scientist" living in NYC with
+                professional experience in programming, composing, and teaching.`}
+                  </motion.div>
                 )}
               </AnimatePresence>
             </motion.button>

@@ -9,7 +9,7 @@ export default {
       },
     },
     screens: {
-      big: "1260px",
+      big: "1450px",
       tiny: "900px",
       supertiny: "450px",
       ubertiny: "250px",

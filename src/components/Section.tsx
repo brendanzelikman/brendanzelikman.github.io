@@ -52,10 +52,10 @@ export function Section(props: { section: PortfolioSection; i: number }) {
       </div>
 
       {/* Small viewports use a carousel */}
-      <div className="big:hidden supertiny:flex hidden relative min-h-24 overflow-scroll items-center gap-2 bg-slate-500/10">
+      <div className="big:hidden supertiny:flex hidden relative min-h-24 w-full overflow-scroll items-center gap-2 bg-slate-500/10">
         {/* Elements swipe in the direction they are going */}
         <AnimatePresence initial={false} custom={direction}>
-          <div className="relative size-full min-w-48 shrink-0 min-h-28 flex items-center justify-center">
+          <div className="relative size-full w-96 min-h-28 flex items-center justify-center">
             <motion.div
               key={index}
               custom={direction}

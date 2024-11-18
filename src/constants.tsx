@@ -4,6 +4,7 @@ export const PRINCETON_CS = "https://www.cs.princeton.edu/";
 export const PRINCETON_MUSIC = "https://music.princeton.edu";
 export const PRINCETON_THESIS =
   "https://dataspace.princeton.edu/handle/88435/dsp0108612r81z";
+export const PRINCETON_CONCERTS = "https://concerts.princeton.edu/";
 
 // Experience
 export const TERRACE = "https://princetonterraceclub.org/";
@@ -12,9 +13,15 @@ export const HMEI =
 export const BC = "https://www.berkeleycarroll.org";
 export const BC_MATH =
   "https://www.berkeleycarroll.org/academics/upper-school/academics/mathematics";
+export const BC_ADMISSIONS = "https://www.berkeleycarroll.org/admissions";
 
-// Showcase
+// Harmonia
 export const HARMONIA = "https://brendanzelikman.github.io/harmonia/";
+export const HARMONIA_GITHUB =
+  "https://www.github.com/brendanzelikman/harmonia";
+export const HARMONIA_TRAILER = "https://www.youtube.com/watch?v=FCnJfxeMb98";
+
+// Music
 export const CIRCUS = "https://musescore.com/user/33605133/scores/9157980";
 export const SONATA1 = "https://musescore.com/user/33605133/scores/9282505";
 export const SONATA2 = "https://musescore.com/user/33605133/scores/9282517";
@@ -25,8 +32,6 @@ export const RACH =
   "https://drive.google.com/file/d/1jh-HHiVpYvs_g_TjckTx4Eud2AtpDZ8m/view";
 
 // Socials
-export const HARMONIA_GITHUB =
-  "https://www.github.com/brendanzelikman/harmonia";
 export const GITHUB = "https://www.github.com/brendanzelikman";
 
 // Util
