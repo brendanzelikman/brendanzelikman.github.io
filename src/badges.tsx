@@ -5,7 +5,6 @@ import {
   BC,
   TERRACE,
   HMEI,
-  HARMONIA,
   BC_MATH,
   CIRCUS,
   SONATA1,
@@ -13,7 +12,7 @@ import {
   GITHUB,
   PRINCETON_THESIS,
 } from "constants";
-import { BCShield, Harmonia } from "hooks/useImagePreloader";
+import { BCShield, Harmonia } from "hooks/useMediaPreloader";
 import { IconType } from "react-icons";
 import { BsGithub } from "react-icons/bs";
 import {

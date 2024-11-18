@@ -17,7 +17,7 @@ export function Badges() {
         duration: 0.6,
         type: "spring",
       }}
-      className="supertiny:p-6 p-2 rounded-lg my-auto grid tiny:grid-cols-1 supertiny:grid-cols-2 grid-cols-1 backdrop-blur overflow-scroll gap-6 h-min bg-slate-950/50"
+      className="supertiny:p-6 shadow-[0_0_20px_#abf5] p-2 rounded-lg my-auto grid tiny:grid-cols-1 supertiny:grid-cols-2 grid-cols-1 backdrop-blur overflow-scroll gap-6 h-min bg-slate-950/50"
     >
       {PORTFOLIO_SECTIONS.map((section, i) => (
         <Section key={i} section={section} i={i} />

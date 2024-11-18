@@ -1,10 +1,10 @@
 import { AppContext } from "hooks/useAppContext";
-import { useImagePreloader } from "hooks/useImagePreloader";
+import { useMediaPreloader } from "hooks/useMediaPreloader";
 import { useState } from "react";
 
 export const AppContainer = (props: { children: React.ReactNode }) => {
   const [active, setActive] = useState(false);
-  const { isMediaReady } = useImagePreloader();
+  const { isMediaReady } = useMediaPreloader();
   if (!isMediaReady) return null;
   return (
     <AppContext.Provider value={{ active, setActive }}>
