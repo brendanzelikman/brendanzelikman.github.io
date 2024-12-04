@@ -28,12 +28,59 @@ export function Section(props: { section: PortfolioSection; i: number }) {
     setIndex([index + newDirection, newDirection]);
   };
 
+  /* Big and supertiny viewports see all badges */
+  const BadgeTable = (
+    <div className="big:flex supertiny:hidden max-supertiny:*:mx-auto flex-wrap big:flex-row overflow-scroll supertiny:px-4 px-2 items-center gap-2 bg-slate-500/10">
+      {PORTFOLIO_BADGES[section].map((badge, i) => (
+        <BadgeItem key={i} {...badge} />
+      ))}
+    </div>
+  );
+
+  /* Small viewports use a carousel */
+  const BadgeCarousel = (
+    <div className="big:hidden supertiny:flex hidden relative min-h-24 w-full overflow-scroll items-center gap-2 bg-slate-500/10">
+      {/* Elements swipe in the direction they are going */}
+      <AnimatePresence initial={false} custom={direction}>
+        <div className="relative size-full w-96 min-h-28 flex items-center justify-center">
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute"
+            transition={{
+              x: { type: "spring", damping: 30, stiffness: 300 },
+              opacity: { duration: 0.5 },
+            }}
+          >
+            <BadgeItem {...badges[badgeIndex]} />
+          </motion.div>
+        </div>
+      </AnimatePresence>
+      <button
+        className="absolute supertiny:flex hidden left-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
+        onClick={() => offsetBadge(-1)}
+      >
+        <BsArrowLeft />
+      </button>
+      <button
+        className="absolute supertiny:flex hidden right-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
+        onClick={() => offsetBadge(1)}
+      >
+        <BsArrowRight />
+      </button>
+    </div>
+  );
+
   return (
     <motion.div
-      initial={{ x: -200, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: -300, y: -20, scale: 0.5, opacity: 0 }}
+      animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
       transition={{
-        delay: PROFILE_FADE_DELAY + 1 + i * 0.3,
+        delay: PROFILE_FADE_DELAY + 0.3 + i * 0.3,
         duration: 0.5,
         type: "spring",
       }}
@@ -44,48 +91,8 @@ export function Section(props: { section: PortfolioSection; i: number }) {
         <span className="supertiny:hidden">{section.split(" ").slice(1)}</span>
       </div>
 
-      {/* Big and supertiny viewports see all badges */}
-      <div className="big:flex supertiny:hidden max-supertiny:*:mx-auto flex flex-wrap big:flex-row overflow-scroll supertiny:px-4 px-2 items-center gap-2 bg-slate-500/10">
-        {PORTFOLIO_BADGES[section].map((badge, i) => (
-          <BadgeItem key={i} {...badge} />
-        ))}
-      </div>
-
-      {/* Small viewports use a carousel */}
-      <div className="big:hidden supertiny:flex hidden relative min-h-24 w-full overflow-scroll items-center gap-2 bg-slate-500/10">
-        {/* Elements swipe in the direction they are going */}
-        <AnimatePresence initial={false} custom={direction}>
-          <div className="relative size-full w-96 min-h-28 flex items-center justify-center">
-            <motion.div
-              key={index}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="absolute"
-              transition={{
-                x: { type: "spring", damping: 30, stiffness: 300 },
-                opacity: { duration: 0.5 },
-              }}
-            >
-              <BadgeItem {...badges[badgeIndex]} />
-            </motion.div>
-          </div>
-        </AnimatePresence>
-        <button
-          className="absolute supertiny:flex hidden left-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
-          onClick={() => offsetBadge(-1)}
-        >
-          <BsArrowLeft />
-        </button>
-        <button
-          className="absolute supertiny:flex hidden right-4 -mt-4 z-10 bg-slate-900/50 items-center justify-center rounded-full p-1"
-          onClick={() => offsetBadge(1)}
-        >
-          <BsArrowRight />
-        </button>
-      </div>
+      {BadgeTable}
+      {BadgeCarousel}
     </motion.div>
   );
 }

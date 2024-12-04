@@ -1,3 +1,5 @@
+import animate from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{html,ts,tsx}"],
@@ -9,11 +11,11 @@ export default {
       },
     },
     screens: {
-      big: "1450px",
+      big: "1050px",
       tiny: "900px",
       supertiny: "450px",
       ubertiny: "250px",
     },
   },
-  plugins: [],
+  plugins: [animate],
 };

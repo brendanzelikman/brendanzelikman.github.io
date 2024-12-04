@@ -14,12 +14,18 @@ export const BC = "https://www.berkeleycarroll.org";
 export const BC_MATH =
   "https://www.berkeleycarroll.org/academics/upper-school/academics/mathematics";
 export const BC_ADMISSIONS = "https://www.berkeleycarroll.org/admissions";
+export const INNOVATION_FORUM =
+  "https://kellercenter.princeton.edu/people/startups-teams/harmonia";
 
-// Harmonia
+// Projects
 export const HARMONIA = "https://brendanzelikman.github.io/harmonia/";
 export const HARMONIA_GITHUB =
   "https://www.github.com/brendanzelikman/harmonia";
 export const HARMONIA_TRAILER = "https://www.youtube.com/watch?v=FCnJfxeMb98";
+export const HARMONIA_GALLERY =
+  "https://github.com/brendanzelikman/thesis/?tab=readme-ov-file#senior-thesis-gallery";
+export const COLOR_OF_MUSIC =
+  "https://brendanzelikman.github.io/the-color-of-music/";
 
 // Music
 export const CIRCUS = "https://musescore.com/user/33605133/scores/9157980";

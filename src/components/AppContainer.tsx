@@ -8,7 +8,7 @@ export const AppContainer = (props: { children: React.ReactNode }) => {
   if (!isMediaReady) return null;
   return (
     <AppContext.Provider value={{ active, setActive }}>
-      <div className="w-screen h-screen relative flex flex-col tiny:flex-row tiny:gap-20 gap-4 p-4 tiny:justify-evenly overflow-hidden">
+      <div className="w-screen h-screen relative flex flex-col gap-4 p-4 tiny:justify-evenly overflow-hidden">
         {props.children}
       </div>
     </AppContext.Provider>

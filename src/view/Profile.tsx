@@ -1,14 +1,14 @@
 import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
-import { BubblePortrait, StyledPortrait } from "components/Portrait";
+import { motion } from "framer-motion";
+import { BubblePortrait } from "components/Portrait";
 import { useAppContext } from "hooks/useAppContext";
-import { Typewriter } from "components/Typewriter";
 
 export function Profile() {
   const { active, setActive } = useAppContext();
   return (
     <motion.div
       layout
+      className="mb-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
@@ -18,26 +18,35 @@ export function Profile() {
         opacity: { delay: 0.3, duration: 0.8, type: "spring" },
       }}
     >
-      <div className="w-full h-auto tiny:pt-0 tiny:h-screen flex flex-col items-center justify-center">
+      <div className="w-screen flex flex-col items-center">
         <div
           className={classNames(
             "bg-gradient-to-b from-sky-500/10 to-indigo-500/10 border-2 border-indigo-700 backdrop-blur-lg rounded-lg",
-            "relative transition-all duration-300 tiny:w-[450px] w-full flex flex-col gap-10 overflow-hidden"
+            "relative transition-all duration-300 tiny:w-[450px] max-tiny:w-full flex flex-col gap-10 overflow-hidden"
           )}
         >
-          <div className="tiny:block hidden">
+          {/* <div className="tiny:block hidden">
             <StyledPortrait />
-          </div>
-          <div className="mt-auto px-4 py-8 text-xl bg-slate-950/50 z-40 backdrop-blur-lg w-full flex flex-col items-center justify-center text-slate-200 drop-shadow-xl">
+          </div> */}
+          <div className="px-4 py-2 text-xl bg-slate-950/50 z-40 backdrop-blur-lg size-full flex flex-col items-center justify-center text-slate-200 drop-shadow-xl">
             <div
-              className="flex justify-center items-center flex-wrap mx-auto neon gap-4 mb-6 text-center supertiny:text-3xl tiny:text-4xl text-xl indigo font-normal drop-shadow-2xl"
+              onClick={() => setActive(!active)}
+              className="flex justify-center items-center flex-wrap mx-auto neon gap-4 text-center supertiny:text-3xl tiny:text-4xl text-xl indigo font-normal drop-shadow-2xl"
               style={{ textShadow: "3px 1px 20px #6688ffdd" }}
             >
-              <BubblePortrait className="block tiny:hidden" />
-              Brendan Zelikman
+              <BubblePortrait className="cursor-pointer" />
+              <div className="flex flex-col items-start cursor-pointer select-none">
+                <div className="border-b mb-1">Brendan Zelikman</div>
+                <div className="text-base italic">
+                  Music, Technology, and Education
+                </div>
+                <div className="text-base text-sky-300">
+                  Click to {active ? "admire the view" : "see my profile"}
+                </div>
+              </div>
             </div>
 
-            <motion.button
+            {/* <motion.button
               whileHover={active ? undefined : { scale: 1.05 }}
               whileTap={active ? undefined : { scale: 0.95 }}
               transition={{ scale: { duration: 0.1, type: "tween" } }}
@@ -80,7 +89,7 @@ export function Profile() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </motion.button> */}
           </div>
         </div>
       </div>

@@ -2,26 +2,26 @@ import {
   PRINCETON,
   PRINCETON_CS,
   PRINCETON_MUSIC,
-  BC,
   TERRACE,
   HMEI,
   BC_MATH,
   CIRCUS,
   SONATA1,
   RACH,
-  GITHUB,
-  PRINCETON_THESIS,
   HARMONIA_TRAILER,
   JESTER,
-  PRINCETON_CONCERTS,
   BC_ADMISSIONS,
+  HARMONIA,
+  COLOR_OF_MUSIC,
+  HARMONIA_GALLERY,
+  INNOVATION_FORUM,
 } from "constants";
 import { Harmonia } from "hooks/useMediaPreloader";
+import { ReactNode } from "react";
 import { IconType } from "react-icons";
-import { BsGithub, BsYoutube } from "react-icons/bs";
+import { BsCodeSlash, BsGithub, BsYoutube } from "react-icons/bs";
 import {
   GiTigerHead,
-  GiRobotGolem,
   GiPianoKeys,
   GiLion,
   GiPartyHat,
@@ -29,9 +29,9 @@ import {
   GiClown,
   GiDramaMasks,
   GiBurningPassion,
-  GiTeacher,
   GiMusicalNotes,
   GiJesterHat,
+  GiClassicalKnowledge,
 } from "react-icons/gi";
 import { TbMathIntegrals } from "react-icons/tb";
 
@@ -39,17 +39,17 @@ import { TbMathIntegrals } from "react-icons/tb";
 // Portfolio Sections
 // ----------------------------
 
-export const SkillsSection = "Exceptional Skills";
-export const EducationSection = "College Education";
-export const ExperienceSection = "Work Experience";
-export const MusicSection = "Music Showcase";
+export const SkillsSection = "Favorite Projects";
+export const MusicSection = "Favorite Works";
+export const EducationSection = "Academic Highlights";
+export const ExperienceSection = "Career Experience";
 
 export type PortfolioSection = (typeof PORTFOLIO_SECTIONS)[number];
 export const PORTFOLIO_SECTIONS = [
   SkillsSection,
-  EducationSection,
-  ExperienceSection,
   MusicSection,
+  ExperienceSection,
+  EducationSection,
 ] as const;
 
 // ----------------------------
@@ -57,7 +57,7 @@ export const PORTFOLIO_SECTIONS = [
 // ----------------------------
 
 export type Badge = Partial<{
-  title: string;
+  title: ReactNode;
   caption: string;
   color: string;
   url: string;
@@ -66,60 +66,60 @@ export type Badge = Partial<{
 
 export const SkillsBadges: Badge[] = [
   {
-    title: "Music Technology",
-    caption: "Scorewriters, DAWs, Plugins",
+    title: "Harmonia (DAW)",
+    caption: "Illuminate the Geometry of Music!",
     color: "text-red-500",
-    url: PRINCETON_THESIS,
+    url: HARMONIA,
     Icon: () => <img src={Harmonia} alt="Harmonia" />,
   },
   {
-    title: "Web Development",
-    caption: "Typescript, React, Redux",
-    color: "text-indigo-300",
-    url: GITHUB,
-    Icon: BsGithub,
-  },
-  {
-    title: "Multimedia Production",
-    caption: "Editing, Arranging, Mixing",
+    title: "Introducing... (Trailer)",
+    caption: "A cinematic preview of Harmonia",
     color: "text-rose-400",
     url: HARMONIA_TRAILER,
     Icon: BsYoutube,
   },
   {
-    title: "Math Education",
-    caption: "Teaching, Tutoring, Planning",
-    color: "text-rose-200",
-    url: BC,
-    Icon: TbMathIntegrals,
+    title: "Thesis (Gallery)",
+    caption: "The evolution of my web design",
+    color: "text-indigo-400",
+    url: HARMONIA_GALLERY,
+    Icon: BsGithub,
+  },
+  {
+    title: "The Color of Music (Tool)",
+    caption: "Play the piano, with colors!",
+    color: "text-rose-300",
+    url: COLOR_OF_MUSIC,
+    Icon: GiPianoKeys,
   },
 ];
 
 export const EducationBadges: Badge[] = [
   {
     title: "Princeton University",
-    caption: "Great Class of 2023",
+    caption: "The Great Class of 2023",
     color: "text-orange-300",
     url: PRINCETON,
     Icon: GiTigerHead,
   },
   {
     title: "A.B. Computer Science",
-    caption: "Cum Laude + Thesis Award",
-    color: "text-blue-300",
+    caption: "Cum Laude + Thesis Prize",
+    color: "text-teal-300",
     url: PRINCETON_CS,
-    Icon: GiRobotGolem,
+    Icon: BsCodeSlash,
   },
   {
-    title: "Minor in Music Performance",
-    caption: "Certificate in Composition",
-    color: "text-fuchsia-200",
+    title: "Certificate in Music",
+    caption: "Music Theory + Composition",
+    color: "text-fuchsia-300",
     url: PRINCETON_MUSIC,
-    Icon: GiPianoKeys,
+    Icon: GiMusicalNotes,
   },
   {
     title: "Terrace F. Club",
-    caption: "Club Officer + Social Chair",
+    caption: "Club Officer / Social Chair",
     color: "text-emerald-300",
     url: TERRACE,
     Icon: GiPartyHat,
@@ -128,33 +128,32 @@ export const EducationBadges: Badge[] = [
 
 export const ExperienceBadges: Badge[] = [
   {
-    title: "Berkeley Carroll School",
-    caption: "US/MS Admissions Intern",
-    color: "text-red-400",
+    title: "Math Teacher Replacement",
+    caption: "Algebera II + Multivariable Calculus",
+    color: "text-sky-500",
+    url: BC_MATH,
+    Icon: TbMathIntegrals,
+  },
+  {
+    title: "Admissions Internship",
+    caption: "Berkeley Carroll School",
+    color: "text-rose-400",
     url: BC_ADMISSIONS,
     Icon: GiLion,
   },
   {
-    title: "High Meadows Institute",
-    caption: "Hurricane Risk Analysis Intern",
-    color: "text-indigo-300",
+    title: "Hurricane Risk Analysis",
+    caption: "High Meadows Environmental Institute",
+    color: "text-indigo-400",
     url: HMEI,
     Icon: GiTornado,
   },
   {
-    title: "Berkeley Carroll School",
-    caption: "Math Teacher Leave Replacement",
-    color: "text-emerald-300",
-    url: BC_MATH,
-    Icon: GiTeacher,
-  },
-
-  {
-    title: "Princeton University Concerts",
-    caption: "Outreach + Postering Intern",
-    color: "text-purple-300",
-    url: PRINCETON_CONCERTS,
-    Icon: GiMusicalNotes,
+    title: "Research Exhibition",
+    caption: "Princeton Innovation Forum",
+    color: "text-rose-300",
+    url: INNOVATION_FORUM,
+    Icon: GiClassicalKnowledge,
   },
 ];
 
@@ -167,25 +166,25 @@ export const MusicBadges: Badge[] = [
     Icon: GiClown,
   },
   {
-    title: "'Sonata No. 1' in E Minor",
-    caption: "Written in the style of Beethoven",
+    title: "Étude-Tableau in Eb Minor",
+    caption: "My performance of Rachmaninoff",
     color: "text-teal-300",
-    url: SONATA1,
-    Icon: GiDramaMasks,
+    url: RACH,
+    Icon: GiBurningPassion,
   },
   {
     title: "'The Jester' in Db Major",
-    caption: "A study on the (015) set class",
+    caption: "A slippery study on musical sets",
     color: "text-fuchsia-300",
     url: JESTER,
     Icon: GiJesterHat,
   },
   {
-    title: "Étude-Tableau in Eb Minor",
-    caption: "My own performance of Rachmaninoff",
-    color: "text-red-300",
-    url: RACH,
-    Icon: GiBurningPassion,
+    title: "'Sonata No. 1' in E Minor",
+    caption: "Written in the style of Beethoven",
+    color: "text-emerald-300",
+    url: SONATA1,
+    Icon: GiDramaMasks,
   },
 ];
 
