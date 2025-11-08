@@ -9,6 +9,9 @@
   scrollbar-width: none;
   overflow: hidden;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 
 @keyframes animateBackground {
   0% {

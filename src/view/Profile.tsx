@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import { BubblePortrait } from "components/Portrait";
 import { useAppContext } from "hooks/useAppContext";
+import { GITHUB, MUSESCORE, PROD } from "constants";
 
 export function Profile() {
   const { active, setActive } = useAppContext();
@@ -14,8 +15,8 @@ export function Profile() {
       transition={{
         delay: PROFILE_FADE_DELAY + 0.4,
         duration: 0.6,
-        type: "spring",
-        opacity: { delay: 0.3, duration: 0.8, type: "spring" },
+        damping: 30,
+        opacity: { delay: 0.3, duration: 0.8 },
       }}
     >
       <div className="w-screen flex flex-col items-center">
@@ -25,71 +26,25 @@ export function Profile() {
             "relative transition-all duration-300 tiny:w-[450px] max-tiny:w-full flex flex-col gap-10 overflow-hidden"
           )}
         >
-          {/* <div className="tiny:block hidden">
-            <StyledPortrait />
-          </div> */}
           <div className="px-4 py-2 text-xl bg-slate-950/50 z-40 backdrop-blur-lg size-full flex flex-col items-center justify-center text-slate-200 drop-shadow-xl">
             <div
-              onClick={() => setActive(!active)}
               className="flex justify-center items-center flex-wrap mx-auto neon gap-4 text-center supertiny:text-3xl tiny:text-4xl text-xl indigo font-normal drop-shadow-2xl"
               style={{ textShadow: "3px 1px 20px #6688ffdd" }}
             >
-              <BubblePortrait className="cursor-pointer" />
-              <div className="flex flex-col items-start cursor-pointer select-none">
+              <BubblePortrait />
+              <div className="flex flex-col items-start select-none">
                 <div className="border-b mb-1">Brendan Zelikman</div>
-                <div className="text-base italic">
-                  Music, Technology, and Education
+                <div className="flex items-center text-base">
+                  Musician • Programmer • Designer
                 </div>
-                <div className="text-base text-sky-300">
-                  Click to {active ? "admire the view" : "see my profile"}
+                <div
+                  className="text-base text-sky-300 cursor-pointer"
+                  onClick={() => setActive(!active)}
+                >
+                  Click to {active ? "admire the view" : "see my portfolio"}
                 </div>
               </div>
             </div>
-
-            {/* <motion.button
-              whileHover={active ? undefined : { scale: 1.05 }}
-              whileTap={active ? undefined : { scale: 0.95 }}
-              transition={{ scale: { duration: 0.1, type: "tween" } }}
-              className={classNames(
-                active ? "h-32" : "h-14",
-                active ? "supertiny:p-4 p-1" : "py-2 supertiny:px-16 px-4",
-                active
-                  ? "bg-slate-900/50"
-                  : "bg-gradient-radial from-sky-600/50 to-indigo-600/50",
-                active
-                  ? "border-indigo-400/40 cursor-default"
-                  : "border-white/5 shover:bg-indigo-800/50 hover:border-indigo-300/50",
-                "shadow-[1px_1px_20px_10px_#228a] mx-auto overflow-scroll font-light backdrop-blur-lg transition-all rounded-lg border"
-              )}
-              onClick={() => setActive(true)}
-            >
-              <AnimatePresence>
-                {!active && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ display: active ? "none" : "block" }}
-                    className="supertiny:text-3xl"
-                  >
-                    Open <span className="max-supertiny:hidden">Portfolio</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {active && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="supertiny:text-balance supertiny:text-lg text-sm"
-                  >
-                    {`Hello, World! I am a "mad musical scientist" living in NYC with
-                professional experience in programming, composing, and teaching.`}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button> */}
           </div>
         </div>
       </div>

@@ -1,4 +1,8 @@
+export const PROD = "https://brendanzelikman.github.io";
+
 // Education
+export const STANFORD = "https://www.stanford.edu/";
+export const CCRMA = "https://ccrma.stanford.edu/";
 export const PRINCETON = "https://www.princeton.edu";
 export const PRINCETON_CS = "https://www.cs.princeton.edu/";
 export const PRINCETON_MUSIC = "https://music.princeton.edu";
@@ -10,6 +14,7 @@ export const PRINCETON_CONCERTS = "https://concerts.princeton.edu/";
 export const TERRACE = "https://princetonterraceclub.org/";
 export const HMEI =
   "https://environment.princeton.edu/wp-content/uploads/2022/09/HMEI_Symposium_Program_2022.pdf";
+export const CURTIS = "https://www.curtis.edu/";
 export const BC = "https://www.berkeleycarroll.org";
 export const BC_MATH =
   "https://www.berkeleycarroll.org/academics/upper-school/academics/mathematics";
@@ -18,7 +23,7 @@ export const INNOVATION_FORUM =
   "https://kellercenter.princeton.edu/people/startups-teams/harmonia";
 
 // Projects
-export const HARMONIA = "https://brendanzelikman.github.io/harmonia/";
+export const HARMONIA = "https://musicalcalculator.vercel.app/";
 export const HARMONIA_GITHUB =
   "https://www.github.com/brendanzelikman/harmonia";
 export const HARMONIA_TRAILER = "https://www.youtube.com/watch?v=FCnJfxeMb98";
@@ -26,6 +31,9 @@ export const HARMONIA_GALLERY =
   "https://github.com/brendanzelikman/thesis/?tab=readme-ov-file#senior-thesis-gallery";
 export const COLOR_OF_MUSIC =
   "https://brendanzelikman.github.io/the-color-of-music/";
+
+export const HW2 = "https://ccrma.stanford.edu/~brendan/256a/hw2/";
+export const HW3 = "https://ccrma.stanford.edu/~brendan/256a/hw3/";
 
 // Music
 export const CIRCUS = "https://musescore.com/user/33605133/scores/9157980";
@@ -39,6 +47,7 @@ export const RACH =
 
 // Socials
 export const GITHUB = "https://www.github.com/brendanzelikman";
+export const MUSESCORE = "https://musescore.com/user/33605133";
 
 // Util
 export type Timeout = ReturnType<typeof setTimeout>;
